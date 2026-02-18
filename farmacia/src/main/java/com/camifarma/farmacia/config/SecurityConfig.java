@@ -34,12 +34,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Para APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // login y registro públicos
-                        .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/api/proveedores/*/detalles").permitAll()
-                        .requestMatchers("/api/provemedi/**").permitAll()
-                        .requestMatchers("/api/ventas/**").permitAll()
-                        .anyRequest().authenticated())
+                	    .requestMatchers("/auth/**").permitAll()
+                	    .requestMatchers("/api/**").permitAll()
+                	    .anyRequest().permitAll()
+                	)
+
                 .httpBasic(Customizer.withDefaults())
                 .cors(Customizer.withDefaults());
 
